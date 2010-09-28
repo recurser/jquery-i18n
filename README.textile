@@ -5,7 +5,7 @@ _jQuery-i18n_ is a jQuery plugin for doing client-side translations in javascrip
 
 h2. Installation
 
-You'll need to download the "jQuery library":http://docs.jquery.com/Downloading_jQuery#Current_Release , and include it before jquery.i18n.js in your HTML source. See the _examples_ folder for examples.
+You'll need to download the "jQuery library":http://docs.jquery.com/Downloading_jQuery#Current_Release , and include it before _jquery.i18n.js_ in your HTML source. See the _examples_ folder for examples.
 
 h2. Usage
 

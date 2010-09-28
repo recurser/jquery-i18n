@@ -2,14 +2,14 @@
  * jQuery i18n plugin
  * @requires jQuery v1.1 or later
  *
- * Examples at: http://recursive-design.com/projects/jquery-i18n/
+ * See http://recursive-design.com/projects/jquery-i18n/
  *
- * Dual licensed under the MIT and GPL licenses:
+ * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
  *
  * Revision: $Id$
- * Version: 0.9.0 (201009282012)
+ * Version: 0.9.0
+ (201009282255)
  */
  (function($) {
 /**
