@@ -38,7 +38,7 @@
         <concat destfile="${JQI_MIN}">
             <filelist files="${JQI}, tmpmin"/>
             <filterchain>
-                <headfilter lines="12"/>
+                <headfilter lines="11"/>
             </filterchain>
         </concat>
         <concat destfile="${JQI_MIN}" append="yes">
