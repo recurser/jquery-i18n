@@ -13,8 +13,8 @@ Before you can do any translation you have to initialise the plugin with a ‘di
 
 {% highlight javascript %}
 var my_dictionary = { 
-    "some text"  : "a translation",
-    "some more text"  : "another translation"
+    'some text':      'a translation',
+    'some more text': 'another translation'
 }
 $.i18n.setDictionary(my_dictionary);
 {% endhighlight %}
@@ -24,6 +24,25 @@ Once you’ve initialised it with a dictionary, you can translate strings using 
 {% highlight javascript %}
 $('div#example').text($.i18n._('some text'));
 {% endhighlight %}
+
+h2. Wildcards
+
+It's straightforward to pass dynamic data into your translations. First, add _%s_ in the translation for each variable you want to swap in :
+
+{% highlight javascript %}
+var my_dictionary = { 
+    "wildcard example"  : "We have been passed two values : %s and %s."
+}
+$.i18n.setDictionary(my_dictionary);
+{% endhighlight %}
+
+Next, pass an array of values in as the second argument when you perform the translation :
+
+{% highlight javascript %}
+$('div#example').text($.i18n._('wildcard example', [100, 200]));
+{% endhighlight %}
+
+This will output _We have been passed two values : 100 and 200._
 
 h2. Building From Scratch
 

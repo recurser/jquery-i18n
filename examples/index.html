@@ -18,7 +18,8 @@ $(document).ready(function(){
 		"Example 7"  : "teidän veden",
 		"Example 8"  : "teitän veten",
 		"Example 9"  : "teiðän veðen",
-		"Example 10" : "teidhän vethen"
+		"Example 10" : "teidhän vethen",
+		"Dynamic Content" : "Your browser window is %s x %s"
 	};
 	
 	$.i18n.setDictionary(i18n_dict);
@@ -34,6 +35,7 @@ $(document).ready(function(){
 		$('div#example8').text($.i18n._('Example 8'));
 		$('div#example9').text($.i18n._('Example 9'));
 		$('div#example10').text($.i18n._('Example 10'));
+		$('div#dynamic').text($.i18n._('Dynamic Content', [$(document).width(), $(document).height()]));
 	});
 });
 </script>
@@ -66,6 +68,7 @@ $(document).ready(function(){
 	<div id='example8'>Example 8</div>
 	<div id='example9'>Example 9</div>
 	<div id='example10'>Example 10</div>
+	<div id='dynamic'>Dynamic Content</div>
 
 	<input type='button' id='translate_button' value='Internationalize!' />
 </body>
