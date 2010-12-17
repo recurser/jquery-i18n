@@ -8,7 +8,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *
  * Revision: $Id$
- * Version: 0.9.0 (201012171423)
+ * Version: 0.9.1 (201012171435)
  */
  (function($) {
 /**
