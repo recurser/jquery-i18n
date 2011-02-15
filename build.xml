@@ -3,7 +3,7 @@
     
     <tstamp />
     
-    <loadfile property="version" srcfile="version.txt"/>
+    <loadfile property="version" srcfile="VERSION"/>
     
     <property description="Folder for jquery.i18n and min target" name="dist" value="."/>
     <property name="JQI" value="${dist}/jquery.i18n.js"/>
