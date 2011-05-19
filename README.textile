@@ -91,4 +91,28 @@ Total time: 1 second
 
 h2. Bug Reports
 
-If you come across any problems, please "create a ticket":http://recursive-design.com/code/p/jquery-i18n/issues/ and we'll try to get it fixed as soon as possible.
+If you come across any problems, please "create a ticket":https://github.com/recurser/jquery-i18n/issues and we'll try to get it fixed as soon as possible.
+
+
+h2. Contributing
+
+Once you've made your commits:
+
+1. "Fork":http://help.github.com/fork-a-repo/ jquery-i18n
+2. Create a topic branch - `git checkout -b my_branch`
+3. Push to your branch - `git push origin my_branch`
+4. Create a "Pull Request":http://help.github.com/pull-requests/ from your branch
+5. That's it!
+
+
+h2. Author
+
+Dave Perrett :: mail@recursive-design.com :: "@recurser":http://twitter.com/recurser
+
+
+h2. Copyright
+
+Copyright (c) 2010 Dave Perrett. See "License":https://github.com/recurser/jquery-i18n/blob/master/LICENSE for details.
+
+
+
