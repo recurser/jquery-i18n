@@ -1,54 +1,59 @@
 
-h2. About
+About
+-----
 
-_jQuery-i18n_ is a jQuery plugin for doing client-side translations in javascript. It is based heavily on "javascript i18n that almost doesn’t suck":http://markos.gaivo.net/blog/?p=100 by Marko Samastur, and is licensed under the "MIT license":http://www.opensource.org/licenses/mit-license.php .
+_jQuery-i18n_ is a jQuery plugin for doing client-side translations in javascript. It is based heavily on [javascript i18n that almost doesn’t suck](http://markos.gaivo.net/blog/?p=100) by Marko Samastur, and is licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
 
-h2. Installation
+Installation
+------------
 
-You'll need to download the "jQuery library":http://docs.jquery.com/Downloading_jQuery#Current_Release , and include it before _jquery.i18n.js_ in your HTML source. See the _examples_ folder for examples.
+You'll need to download the [jQuery library](http://docs.jquery.com/Downloading_jQuery#Current_Release), and include it before _jquery.i18n.js_ in your HTML source. See the _examples_ folder for examples.
 
-h2. Usage
+Usage
+-----
 
 Before you can do any translation you have to initialise the plugin with a ‘dictionary’ (basically a property list mapping keys to their translations).
 
-{% highlight javascript %}
+```javascript
 var my_dictionary = { 
     'some text':      'a translation',
     'some more text': 'another translation'
 }
 $.i18n.setDictionary(my_dictionary);
-{% endhighlight %}
+```
 
 Once you’ve initialised it with a dictionary, you can translate strings using the $.i18n._() function, for example:
 
-{% highlight javascript %}
+```javascript
 $('div#example').text($.i18n._('some text'));
-{% endhighlight %}
+```
 
-h2. Wildcards
+Wildcards
+---------
 
 It's straightforward to pass dynamic data into your translations. First, add _%s_ in the translation for each variable you want to swap in :
 
-{% highlight javascript %}
+```javascript
 var my_dictionary = { 
     "wildcard example"  : "We have been passed two values : %s and %s."
 }
 $.i18n.setDictionary(my_dictionary);
-{% endhighlight %}
+```
 
 Next, pass an array of values in as the second argument when you perform the translation :
 
-{% highlight javascript %}
+```javascript
 $('div#example').text($.i18n._('wildcard example', [100, 200]));
-{% endhighlight %}
+```
 
 This will output _We have been passed two values : 100 and 200._
 
-h2. Building From Scratch
+Building From Scratch
+---------------------
 
 You can build the regular, un-minified version simply by running _ant_:
 
-{% highlight bash %}
+```bash
 $ ant
 Buildfile: build.xml
 
@@ -58,20 +63,20 @@ jquery.i18n:
 
 BUILD SUCCESSFUL
 Total time: 0 seconds
-{% endhighlight %}
+```
 
-Before you can build the minified version yourself, you'll need to download the "Google Closure Compiler":http://closure-compiler.googlecode.com/files/compiler-latest.zip and put it in a folder called _build_:
+Before you can build the minified version yourself, you'll need to download the [Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip) and put it in a folder called _build_:
 
-{% highlight bash %}
+```bash
 $ mkdir build
 $ cd build
 $ wget http://closure-compiler.googlecode.com/files/compiler-latest.zip
 $ unzip compiler-latest.zip
-{% endhighlight %}
+```
 
 Once you have the compiler, you can build the minified version by running _ant min_:
 
-{% highlight bash %}
+```bash
 $ ant min
 Buildfile: build.xml
 
@@ -87,32 +92,36 @@ min:
 
 BUILD SUCCESSFUL
 Total time: 1 second
-{% endhighlight %}
+```
 
-h2. Bug Reports
+Bug Reports
+-----------
 
-If you come across any problems, please "create a ticket":https://github.com/recurser/jquery-i18n/issues and we'll try to get it fixed as soon as possible.
+If you come across any problems, please [create a ticket](https://github.com/recurser/jquery-i18n/issues) and we'll try to get it fixed as soon as possible.
 
 
-h2. Contributing
+Contributing
+------------
 
 Once you've made your commits:
 
-1. "Fork":http://help.github.com/fork-a-repo/ jquery-i18n
+1. [Fork](http://help.github.com/fork-a-repo/) jquery-i18n
 2. Create a topic branch - `git checkout -b my_branch`
 3. Push to your branch - `git push origin my_branch`
-4. Create a "Pull Request":http://help.github.com/pull-requests/ from your branch
+4. Create a [Pull Request](http://help.github.com/pull-requests/) from your branch
 5. That's it!
 
 
-h2. Author
+Author
+------
 
-Dave Perrett :: mail@recursive-design.com :: "@recurser":http://twitter.com/recurser
+Dave Perrett :: mail@recursive-design.com :: [@recurser](http://twitter.com/recurser)
 
 
-h2. Copyright
+Copyright
+---------
 
-Copyright (c) 2010 Dave Perrett. See "License":https://github.com/recurser/jquery-i18n/blob/master/LICENSE for details.
+Copyright (c) 2010 Dave Perrett. See [License](https://github.com/recurser/jquery-i18n/blob/master/LICENSE) for details.
 
 
 
