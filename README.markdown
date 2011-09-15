@@ -28,6 +28,12 @@ Once you’ve initialised it with a dictionary, you can translate strings using 
 $('div#example').text($.i18n._('some text'));
 ```
 
+or using $('selector')._t() function
+
+```javascript
+$('div#example')._t('some text');
+```
+
 Wildcards
 ---------
 
@@ -44,6 +50,12 @@ Next, pass an array of values in as the second argument when you perform the tra
 
 ```javascript
 $('div#example').text($.i18n._('wildcard example', [100, 200]));
+```
+
+or
+
+```javascript
+$('div#example')._t('wildcard example', [100, 200]);
 ```
 
 This will output _We have been passed two values : 100 and 200._
