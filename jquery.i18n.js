@@ -7,7 +7,7 @@
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Version: 0.9.1 (201012171436)
+ * Version: 0.9.1 (201109152239)
  */
  (function($) {
 /**
@@ -125,6 +125,20 @@ $.i18n = {
 		return nS + tS[tS.length-1];
 	}
 
+};
+
+/*
+ * _t
+ * Allows you to translate a jQuery selector
+ *
+ * eg $('h1')._t('some text')
+ * 
+ * @param string str : The string to translate 
+ * @param property_list params : params for using printf() on the string
+ * @return element : chained and translated element(s)
+*/
+$.fn._t = function(str, params) {
+  return $(this).text($.i18n._(str, params));
 };
 
 

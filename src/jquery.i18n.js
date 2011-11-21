@@ -127,5 +127,19 @@ $.i18n = {
 
 };
 
+/*
+ * _t
+ * Allows you to translate a jQuery selector
+ *
+ * eg $('h1')._t('some text')
+ * 
+ * @param string str : The string to translate 
+ * @param property_list params : params for using printf() on the string
+ * @return element : chained and translated element(s)
+*/
+$.fn._t = function(str, params) {
+  return $(this).text($.i18n._(str, params));
+};
+
 
 })(jQuery);
