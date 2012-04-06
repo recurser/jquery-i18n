@@ -2,7 +2,7 @@
 About
 -----
 
-_jQuery-i18n_ is a jQuery plugin for doing client-side translations in javascript. It is based heavily on [javascript i18n that almost doesn’t suck](http://markos.gaivo.net/blog/?p=100) by Marko Samastur, and is licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+_jQuery-i18n_ is a jQuery plugin for doing client-side translations in javascript. It is based heavily on [javascript i18n that almost doesn't suck](http://markos.gaivo.net/blog/?p=100) by Marko Samastur, and is licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
 
 Installation
 ------------
@@ -12,7 +12,7 @@ You'll need to download the [jQuery library](http://docs.jquery.com/Downloading_
 Usage
 -----
 
-Before you can do any translation you have to initialise the plugin with a ‘dictionary’ (basically a property list mapping keys to their translations).
+Before you can do any translation you have to initialise the plugin with a 'dictionary' (basically a property list mapping keys to their translations).
 
 ```javascript
 var my_dictionary = { 
@@ -22,7 +22,7 @@ var my_dictionary = {
 $.i18n.setDictionary(my_dictionary);
 ```
 
-Once you’ve initialised it with a dictionary, you can translate strings using the $.i18n._() function, for example:
+Once you've initialised it with a dictionary, you can translate strings using the $.i18n._() function, for example:
 
 ```javascript
 $('div#example').text($.i18n._('some text'));
