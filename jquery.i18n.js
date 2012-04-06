@@ -7,7 +7,7 @@
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Version: 0.9.1 (201204070059)
+ * Version: 0.9.2 (201204070102)
  */
  (function($) {
 /**
