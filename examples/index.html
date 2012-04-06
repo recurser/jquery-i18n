@@ -19,7 +19,8 @@ $(document).ready(function(){
 		"Example 8"  : "teitän veten",
 		"Example 9"  : "teiðän veðen",
 		"Example 10" : "teidhän vethen",
-		"Dynamic Content" : "Your browser window is %s x %s"
+		"Dynamic Content" : "Your browser window is %s x %s",
+		"Ordered Dynamic Content": "%2$s is the height of your browser window, and %1$s is the width."
 	};
 	
 	$.i18n.setDictionary(i18n_dict);
@@ -36,6 +37,7 @@ $(document).ready(function(){
 		$('div#example9').text($.i18n._('Example 9'));
 		$('div#example10').text($.i18n._('Example 10'));
 		$('div#dynamic').text($.i18n._('Dynamic Content', [$(document).width(), $(document).height()]));
+		$('div#orderedDynamic').text($.i18n._('Ordered Dynamic Content', [$(document).width(), $(document).height()]));
 	});
 });
 </script>
@@ -69,6 +71,7 @@ $(document).ready(function(){
 	<div id='example9'>Example 9</div>
 	<div id='example10'>Example 10</div>
 	<div id='dynamic'>Dynamic Content</div>
+	<div id='orderedDynamic'>Ordered Dynamic Content</div>
 
 	<input type='button' id='translate_button' value='Internationalize!' />
 </body>

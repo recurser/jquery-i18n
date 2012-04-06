@@ -7,7 +7,7 @@
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Version: 0.9.1 (201109152239)
+ * Version: 0.9.1 (201204070059)
  */
  (function($) {
 /**
@@ -114,13 +114,22 @@ $.i18n = {
 	printf: function(S, L) {
 		if (!L) return S;
 
-		var nS = "";
+		var nS     = "";
+		var search = /%(\d+)\$s/g;
+		// replace %n1$ where n is a number
+		while (result = search.exec(S)) {
+			var index = parseInt(result[1], 10) - 1;
+			S = S.replace('%' + result[1] + '\$s', (L[index]));
+			L.splice(index, 1);
+		}
 		var tS = S.split("%s");
 
-		for(var i=0; i<L.length; i++) {
-			if (tS[i].length != 0 && tS[i].lastIndexOf('%') == tS[i].length-1 && i != L.length-1)
-				tS[i] += "s"+tS.splice(i+1,1)[0];
-			nS += tS[i] + L[i];
+		if (tS.length > 1) {
+			for(var i=0; i<L.length; i++) {
+				if (tS[i].lastIndexOf('%') == tS[i].length-1 && i != L.length-1)
+					tS[i] += "s"+tS.splice(i+1,1)[0];
+				nS += tS[i] + L[i];
+			}
 		}
 		return nS + tS[tS.length-1];
 	}

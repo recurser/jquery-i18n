@@ -60,6 +60,19 @@ $('div#example')._t('wildcard example', [100, 200]);
 
 This will output _We have been passed two values : 100 and 200._
 
+Because some languages will need to order arguments differently to english, you can also specify the order in which the variables appear :
+
+```javascript
+var my_dictionary = { 
+    "wildcard example"  : "We have been passed two values : %2$s and %1$s."
+}
+$.i18n.setDictionary(my_dictionary);
+
+$('div#example').text($.i18n._('wildcard example', [100, 200]));
+```
+
+This will output: _We have been passed two values: 200 and 100._
+
 Building From Scratch
 ---------------------
 
