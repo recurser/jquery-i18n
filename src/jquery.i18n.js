@@ -120,7 +120,7 @@ $.i18n = {
 		while (result = search.exec(S)) {
 			var index = parseInt(result[1], 10) - 1;
 			S = S.replace('%' + result[1] + '\$s', (L[index]));
-			L.splice(index, 1);
+			
 		}
 		var tS = S.split("%s");
 

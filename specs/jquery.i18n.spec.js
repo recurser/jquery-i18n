@@ -34,7 +34,17 @@ describe("jquery.i18n plugin", function() {
 				expect($.i18n._('a_key', ["order", "in", ])).toEqual("translated string in - order");
 			});
 			
+			it("put 2 numbered variables in order", function() {
+				$.i18n.setDictionary({ a_key:"translated string %1$s - %2$s" });
+
+				expect($.i18n._('a_key', ["order", "in", ])).toEqual("translated string order - in");
+			});
 		
+			it("put many numbered variables in random order", function() {
+				$.i18n.setDictionary({ a_key:"translated string %3$s %1$s - %2$s" });
+
+				expect($.i18n._('a_key', ["in", "order",  "many" ])).toEqual("translated string many in - order");
+			});
 		});
 		
 		
