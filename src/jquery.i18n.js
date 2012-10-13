@@ -45,11 +45,13 @@
      * @return string               : Translated word.
      */
   	_: function (str, params) {
-  		var transl = str;
+  		var result = str;
   		if (this.dict && this.dict[str]) {
-  			transl = this.dict[str];
+  			result = this.dict[str];
   		}
-  		return this.printf(transl, params);
+  		
+  		// Substitute any params.
+  		return this.printf(result, params);
   	},
 	
     /**
@@ -79,36 +81,36 @@
      *
      * Substitutes %s with parameters given in list. %%s is used to escape %s.
      *
-     * @param  string S      : String to perform printf on.
-     * @param  string L      : Array of arguments for printf.
+     * @param  string str    : String to perform printf on.
+     * @param  string args   : Array of arguments for printf.
      *
      * @return string result : Substituted string
      */
-  	printf: function(S, L) {
-  		if (!L) return S;
+  	printf: function(str, args) {
+  		if (!args) return str;
 
-  		var nS     = '';
+  		var result = '';
   		var search = /%(\d+)\$s/g;
 		
   		// Replace %n1$ where n is a number.
-  		var matches = search.exec(S);
+  		var matches = search.exec(str);
   		while (matches) {
   			var index = parseInt(matches[1], 10) - 1;
-  			S         = S.replace('%' + matches[1] + '\$s', (L[index]));
-  		  matches   = search.exec(S);
+  			str       = str.replace('%' + matches[1] + '\$s', (args[index]));
+  		  matches   = search.exec(str);
   		}
-  		var tS = S.split('%s');
+  		var parts = str.split('%s');
 
-  		if (tS.length > 1) {
-  			for(var i = 0; i < L.length; i++) {
-  				if (tS[i].length > 0 && tS[i].lastIndexOf('%') == tS[i].length-1 && i != L.length-1) {
-  					tS[i] += 's' + tS.splice(i+1,1)[0];
+  		if (parts.length > 1) {
+  			for(var i = 0; i < args.length; i++) {
+  				if (parts[i].length > 0 && parts[i].lastIndexOf('%') == (parts[i].length - 1) && i != (args.length - 1)) {
+  					parts[i] += 's' + parts.splice(i + 1, 1)[0];
   				}
-  				nS += tS[i] + L[i];
+  				result += parts[i] + args[i];
   			}
   		}
 		
-  		return nS + tS[tS.length-1];
+  		return result + parts[parts.length-1];
   	}
 
   };
