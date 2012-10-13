@@ -126,7 +126,7 @@ $.i18n = {
 
 		if (tS.length > 1) {
 			for(var i=0; i<L.length; i++) {
-				if (tS[i].lastIndexOf('%') == tS[i].length-1 && i != L.length-1)
+				if (tS[i].length > 0 && tS[i].lastIndexOf('%') == tS[i].length-1 && i != L.length-1)
 					tS[i] += "s"+tS.splice(i+1,1)[0];
 				nS += tS[i] + L[i];
 			}
