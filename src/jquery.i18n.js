@@ -53,28 +53,6 @@
   		// Substitute any params.
   		return this.printf(result, params);
   	},
-	
-    /**
-     * toEntity()
-     *
-     * Changes non-ASCII characters to entity representation.
-     *
-     * @param  string str    : The string to transform.
-     *
-     * @return string result : Original string with non-ASCII content converted to entities.
-     */
-  	toEntity: function (str) {
-  		var result = '';
-  		for (var i = 0; i < str.length; i++) {
-  			if (str.charCodeAt(i) > 128) {
-  				result += '&#' + str.charCodeAt(i) + ';';
-  			} else {
-  				result += str.charAt(i);
-  			}
-  		}
-		
-  		return result;
-  	},
 
     /*
      * printf()
