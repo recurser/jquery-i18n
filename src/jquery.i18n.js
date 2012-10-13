@@ -22,28 +22,28 @@
 	
   	dict: null,
 	
-  /**
-   * setDictionary()
-   *
-   * Initialises the dictionary.
-   *
-   * @param  property_list i18n_dict : The dictionary to use for translation.
-   */
+    /**
+     * setDictionary()
+     *
+     * Initialises the dictionary.
+     *
+     * @param  property_list i18n_dict : The dictionary to use for translation.
+     */
   	setDictionary: function(i18n_dict) {
   		this.dict = i18n_dict;
   	},
 	
-  /**
-   * _()
-   *
-   * Looks the given string up in the dictionary and returns the translation if 
-   * one exists. If a translation is not found, returns the original word.
-   *
-   * @param  string str           : The string to translate.
-   * @param  property_list params : params for using printf() on the string.
-   *
-   * @return string               : Translated word.
-   */
+    /**
+     * _()
+     *
+     * Looks the given string up in the dictionary and returns the translation if 
+     * one exists. If a translation is not found, returns the original word.
+     *
+     * @param  string str           : The string to translate.
+     * @param  property_list params : params for using printf() on the string.
+     *
+     * @return string               : Translated word.
+     */
   	_: function (str, params) {
   		var transl = str;
   		if (this.dict && this.dict[str]) {
@@ -52,15 +52,15 @@
   		return this.printf(transl, params);
   	},
 	
-  /**
-   * toEntity()
-   *
-   * Changes non-ASCII characters to entity representation.
-   *
-   * @param  string str    : The string to transform.
-   *
-   * @return string result : Original string with non-ASCII content converted to entities.
-   */
+    /**
+     * toEntity()
+     *
+     * Changes non-ASCII characters to entity representation.
+     *
+     * @param  string str    : The string to transform.
+     *
+     * @return string result : Original string with non-ASCII content converted to entities.
+     */
   	toEntity: function (str) {
   		var result = '';
   		for (var i = 0; i < str.length; i++) {
@@ -74,16 +74,16 @@
   		return result;
   	},
 
-  /*
-   * printf()
-   *
-   * Substitutes %s with parameters given in list. %%s is used to escape %s.
-   *
-   * @param  string S      : String to perform printf on.
-   * @param  string L      : Array of arguments for printf.
-   *
-   * @return string result : Substituted string
-   */
+    /*
+     * printf()
+     *
+     * Substitutes %s with parameters given in list. %%s is used to escape %s.
+     *
+     * @param  string S      : String to perform printf on.
+     * @param  string L      : Array of arguments for printf.
+     *
+     * @return string result : Substituted string
+     */
   	printf: function(S, L) {
   		if (!L) return S;
 
