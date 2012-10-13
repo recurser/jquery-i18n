@@ -73,39 +73,6 @@
 		
   		return result;
   	},
-	
-  /**
-   * stripStr()
-   *
-   * Removes leading and trailing whitespace from a given string.
-   *
-   * @param  string str    : The string to strip.
-   *
-   * @return string result : The stripped string.
-   */
-   	stripStr: function(str) {
-  		return str.replace(/^\s*/, '').replace(/\s*$/, '');
-  	},
-	
-  /**
-   * stripStrML()
-   *
-   * Strips each line of a multi-line string.
-   *
-   * @param  string str    : The multi-line string to strip.
-   *
-   * @return string result : Stripped string.
-   */
-  	stripStrML: function(str) {
-  		// Split because m flag doesn't exist before JS1.5 and we need to
-  		// strip newlines anyway
-  		var parts = str.split('\n');
-  		for (var i = 0; i < parts.length; i++) {
-  			parts[i] = stripStr(parts[i]);
-  		}
-	
-  		return stripStr(parts.join(' '));
-  	},
 
   /*
    * printf()
