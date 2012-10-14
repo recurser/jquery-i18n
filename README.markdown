@@ -15,7 +15,7 @@ Usage
 Before you can do any translation you have to initialise the plugin with a 'dictionary' (basically a property list mapping keys to their translations).
 
 ```javascript
-var my_dictionary = { 
+var my_dictionary = {
     'some text':      'a translation',
     'some more text': 'another translation'
 }
@@ -40,7 +40,7 @@ Wildcards
 It's straightforward to pass dynamic data into your translations. First, add _%s_ in the translation for each variable you want to swap in :
 
 ```javascript
-var my_dictionary = { 
+var my_dictionary = {
     "wildcard example"  : "We have been passed two values : %s and %s."
 }
 $.i18n.setDictionary(my_dictionary);
@@ -63,7 +63,7 @@ This will output _We have been passed two values : 100 and 200._
 Because some languages will need to order arguments differently to english, you can also specify the order in which the variables appear :
 
 ```javascript
-var my_dictionary = { 
+var my_dictionary = {
     "wildcard example"  : "We have been passed two values : %2$s and %1$s."
 }
 $.i18n.setDictionary(my_dictionary);
@@ -72,6 +72,19 @@ $('div#example').text($.i18n._('wildcard example', [100, 200]));
 ```
 
 This will output: _We have been passed two values: 200 and 100._
+
+If you need to explicitly output the string _%s_ in your translation, use _%%s_ :
+
+```javascript
+var my_dictionary = {
+    "wildcard example"  : "I have %s literal %%s character."
+}
+$.i18n.setDictionary(my_dictionary);
+
+$('div#example').text($.i18n._('wildcard example', [1]));
+```
+
+This will output: _I have 1 literal %%s character._
 
 Building From Scratch
 ---------------------
@@ -117,6 +130,13 @@ min:
 
 BUILD SUCCESSFUL
 Total time: 1 second
+```
+
+
+Change history
+-----------
+
+* **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
 ```
 
 Bug Reports
