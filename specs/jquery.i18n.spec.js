@@ -33,6 +33,12 @@ describe ('jquery.i18n plugin', function() {
 
 				expect($.i18n._('a_key', ['string 1', 'string 2'])).toEqual('string 1 and string 2');
 			});
+		
+			it ('treats %%s as a literal %s', function() {
+				$.i18n.setDictionary({ a_key: '%s and a literal %%s and %s' });
+
+				expect($.i18n._('a_key', ['string 1', 'string 2'])).toEqual('string 1 and a literal %s and string 2');
+			});
 			
 		});
 		

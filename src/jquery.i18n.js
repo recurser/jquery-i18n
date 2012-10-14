@@ -81,14 +81,19 @@
 
   		if (parts.length > 1) {
   			for(var i = 0; i < args.length; i++) {
-  				if (parts[i].length > 0 && parts[i].lastIndexOf('%') == (parts[i].length - 1) && i != (args.length - 1)) {
+  			  // If the part ends with a '%' chatacter, we've encountered a literal
+  			  // '%%s', which we should output as a '%s'. To achieve this, add an
+  			  // 's' on the end and merge it with the next part.
+  				if (parts[i].length > 0 && parts[i].lastIndexOf('%') == (parts[i].length - 1)) {
   					parts[i] += 's' + parts.splice(i + 1, 1)[0];
   				}
+  				
+  				// Append the part and the substitution to the result.
   				result += parts[i] + args[i];
   			}
   		}
 		
-  		return result + parts[parts.length-1];
+  		return result + parts[parts.length - 1];
   	}
 
   };
