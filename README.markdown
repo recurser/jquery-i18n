@@ -137,7 +137,6 @@ Change history
 -----------
 
 * **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
-```
 
 Bug Reports
 -----------
