@@ -86,6 +86,44 @@ $('div#example').text($.i18n._('wildcard example', [1]));
 
 This will output: _I have 1 literal %%s character._
 
+Plural Forms
+------------
+
+This plugin uses plural forms such as in Gettext.
+
+[List of plural forms expressions for many languages](http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms)
+
+For example form for russian language:
+
+```text
+plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)
+```
+
+For the addition plural form is used next function
+
+```javascript
+$.i18n.setPlural('plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)');
+```
+
+For translate string used function _p(), for example:
+
+```javascript
+$.i18n._p('%s day', '%s days', 3);
+```
+First parameter - singular form, second parameter - plural form and last parameter - number of plural forms.
+
+An array with translations for multiple forms of the above should contain 3 translations
+
+```javascript
+$.i18n.setDictionary(
+    "%s day": {
+        0: "%s день",
+        1: "%s дня",
+        2: "%s дней"
+    }
+);
+```
+
 Building From Scratch
 ---------------------
 

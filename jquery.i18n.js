@@ -19,24 +19,82 @@
    * i18n property list
    */
   $.i18n = {
-	
+
   	dict: null,
-	
+
+    plural: null,
+
     /**
      * setDictionary()
      *
      * Initialises the dictionary.
+     * Add dictionary to an existing dictionary
      *
      * @param  property_list i18n_dict : The dictionary to use for translation.
      */
   	setDictionary: function(i18n_dict) {
-  		this.dict = i18n_dict;
+        if (this.dict === null) {
+            this.dict = i18n_dict;
+        } else {
+            $.extend(this.dict, i18n_dict);
+        }
   	},
-	
+
+    /**
+     * setPlural()
+     *
+     * Example string for russian language plural
+     * In language 1 singular and 2 plural forms
+     * 'plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)'
+     *
+     * Needed array with 3 elements
+     *  "%s day": {
+     *       0: "%s день",
+     *       1: "%s дня",
+     *       2: "%s дней"
+     *   }
+     *
+     * String analog from gettext
+     *
+     * @param {string} plural_form
+     */
+    setPlural: function(plural_form) {
+        this.plural = plural_form;
+    },
+
+    /**
+     * _p()
+     *
+     * Example
+     * _p('%s day', '%s days', 4)
+     *
+     * @param {string} singular_form : Singular form string
+     * @param {string} plural_form   : Plural form string
+     * @param {int} number           : To calculate the number of plural forms
+     */
+    _p: function(singular_form, plural_form, number) {
+        var translate_list = this.dict[singular_form];
+
+        //Convert number to array
+        var number_arr = new Array();
+        number_arr.push(number);
+
+        if (translate_list === undefined || this.plural === null) {
+            //No translated, return english string
+            var en_string = number > 1 ? plural_form : singular_form;
+            return this.printf(en_string, number_arr);
+        } else {
+            //Executed plural string and translated
+            var plural_string = this.plural.replace(/n%/g, number + "%");
+            eval(plural_string);
+            return this.printf(translate_list[plural], number_arr);
+        }
+    },
+
     /**
      * _()
      *
-     * Looks the given string up in the dictionary and returns the translation if 
+     * Looks the given string up in the dictionary and returns the translation if
      * one exists. If a translation is not found, returns the original word.
      *
      * @param  string str           : The string to translate.
@@ -49,7 +107,7 @@
   		if (this.dict && this.dict[str]) {
   			result = this.dict[str];
   		}
-  		
+
   		// Substitute any params.
   		return this.printf(result, params);
   	},
@@ -69,7 +127,7 @@
 
   		var result = '';
   		var search = /%(\d+)\$s/g;
-		
+
   		// Replace %n1$ where n is a number.
   		var matches = search.exec(str);
   		while (matches) {
@@ -87,12 +145,12 @@
   				if (parts[i].length > 0 && parts[i].lastIndexOf('%') == (parts[i].length - 1)) {
   					parts[i] += 's' + parts.splice(i + 1, 1)[0];
   				}
-  				
+
   				// Append the part and the substitution to the result.
   				result += parts[i] + args[i];
   			}
   		}
-		
+
   		return result + parts[parts.length - 1];
   	}
 
@@ -104,10 +162,10 @@
    * Allows you to translate a jQuery selector.
    *
    * eg $('h1')._t('some text')
-   * 
+   *
    * @param  string str           : The string to translate .
    * @param  property_list params : Params for using printf() on the string.
-   * 
+   *
    * @return element              : Chained and translated element(s).
   */
   $.fn._t = function(str, params) {
