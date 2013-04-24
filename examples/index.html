@@ -24,8 +24,16 @@ $(document).ready(function(){
 	};
 
     i18n_dict_ext = {
-		"Example new"  : "russian"
+		"%s day": {
+            0: "%s день",
+            1: "%s дня",
+            2: "%s дней"
+        }
 	};
+
+    plural = 'plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)';
+
+    $.i18n.setPlural(plural);
 
 	$.i18n.setDictionary(i18n_dict);
 
@@ -41,7 +49,7 @@ $(document).ready(function(){
 		$('div#example7').text($.i18n._('Example 7'));
 		$('div#example8').text($.i18n._('Example 8'));
 		$('div#example9').text($.i18n._('Example 9'));
-		$('div#example10').text($.i18n._('Example new'));
+		$('div#example10').text($.i18n._p('%s day', '%s days', 3));
 		$('div#dynamic').text($.i18n._('Dynamic Content', [$(document).width(), $(document).height()]));
 		$('div#orderedDynamic').text($.i18n._('Ordered Dynamic Content', [$(document).width(), $(document).height()]));
 	});

@@ -22,33 +22,72 @@
 
   	dict: null,
 
+    plural: null,
+
     /**
      * setDictionary()
      *
      * Initialises the dictionary.
+     * Add dictionary to an existing dictionary
      *
      * @param  property_list i18n_dict : The dictionary to use for translation.
      */
   	setDictionary: function(i18n_dict) {
-        if (this.dict == null) {
+        if (this.dict === null) {
             this.dict = i18n_dict;
         } else {
-            this.addDictionary(i18n_dict);
+            $.extend(this.dict, i18n_dict);
         }
   	},
 
     /**
-     * addDictionary()
+     * setPlural()
      *
-     * Add to an existing dictionary
+     * Example string for russian language plural
+     * In language 1 singular and 2 plural forms
+     * 'plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)'
      *
-     * @param {property_list} i18n_dict : The dictionary to use for translation.
+     * Needed array with 3 elements
+     *  "%s day": {
+     *       0: "%s день",
+     *       1: "%s дня",
+     *       2: "%s дней"
+     *   }
+     *
+     * String analog from gettext
+     *
+     * @param {string} plural_form
      */
-    addDictionary: function(i18n_dict) {
-        if (this.dict == null) {
-            this.setDictionary(i18n_dict);
+    setPlural: function(plural_form) {
+        this.plural = plural_form;
+    },
+
+    /**
+     * _p()
+     *
+     * Example
+     * _p('%s day', '%s days', 4)
+     *
+     * @param {string} singular_form : Singular form string
+     * @param {string} plural_form   : Plural form string
+     * @param {int} number           : To calculate the number of plural forms
+     */
+    _p: function(singular_form, plural_form, number) {
+        var translate_list = this.dict[singular_form];
+
+        //Convert number to array
+        var number_arr = new Array();
+        number_arr.push(number);
+
+        if (translate_list === undefined || this.plural === null) {
+            //No translated, return english string
+            var en_string = number > 1 ? plural_form : singular_form;
+            return this.printf(en_string, number_arr);
         } else {
-            $.extend(this.dict, i18n_dict);
+            //Executed plural string and translated
+            var plural_string = this.plural.replace(/n%/g, number + "%");
+            eval(plural_string);
+            return this.printf(translate_list[plural], number_arr);
         }
     },
 
