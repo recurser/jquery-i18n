@@ -1,0 +1,23 @@
+{
+    "name": "newage/jquery-i18n",
+    "description": "A jQuery plugin for doing client-side translations in javascript.",
+    "type": "component",
+    "homepage": "https://github.com/recurser/jquery-i18n",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dave Perrettg",
+            "email": "hello@daveperrett.com"
+        }
+    ],
+    "require": {
+        "robloach/component-installer": "*"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "jquery.i18n.js"
+            ]
+        }
+    }
+}
