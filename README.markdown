@@ -9,6 +9,8 @@ Installation
 
 You'll need to download the [jQuery library](http://docs.jquery.com/Downloading_jQuery#Current_Release), and include it before _jquery.i18n.js_ in your HTML source. See the _examples_ folder for examples.
 
+_jQuery-i18n_ is also available as a [bower](http://bower.io/) component.
+
 Usage
 -----
 
@@ -136,6 +138,7 @@ Total time: 1 second
 Change history
 -----------
 
+* **Version 1.0.1 (2013-10-11)** : Add bower support.
 * **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
 
 Bug Reports
