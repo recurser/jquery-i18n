@@ -8,7 +8,7 @@
 
 <script  type="text/javascript">
 $(document).ready(function(){
-	i18n_dict = { 
+	i18n_dict = {
 		"Example 1"  : "teiän veen",
 		"Example 2"  : "tei'än ve'en",
 		"Example 3"  : "teiä vede",
@@ -22,9 +22,9 @@ $(document).ready(function(){
 		"Dynamic Content" : "Your browser window is %s x %s",
 		"Ordered Dynamic Content": "%2$s is the height of your browser window, and %1$s is the width."
 	};
-	
+
 	$.i18n.setDictionary(i18n_dict);
-	
+
 	$('input#translate_button').click( function(event) {
 		$('div#example1').text($.i18n._('Example 1'));
 		$('div#example2').text($.i18n._('Example 2'));
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
 <body>
 	<p>
-		Click the button to translate the following text into some random Finnish from the 
+		Click the button to translate the following text into some random Finnish from the
 		<a href='http://en.wikipedia.org/wiki/Finnish_phonology'>Wikipedia Finnish Phonology Article</a>
 	</p>
 
