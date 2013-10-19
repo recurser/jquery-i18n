@@ -9,7 +9,7 @@ Installation
 
 You'll need to download the [jQuery library](http://docs.jquery.com/Downloading_jQuery#Current_Release), and include it before _jquery.i18n.js_ in your HTML source. See the _examples_ folder for examples.
 
-_jQuery-i18n_ is also available as a [bower](http://bower.io/) component.
+This library is also available as a [bower](http://bower.io/) component under the name *jquery-i18n*.
 
 Usage
 -----
