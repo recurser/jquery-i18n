@@ -21,7 +21,7 @@ var my_dictionary = {
     'some text':      'a translation',
     'some more text': 'another translation'
 }
-$.i18n.setDictionary(my_dictionary);
+$.i18n.load(my_dictionary);
 ```
 
 Once you've initialised it with a dictionary, you can translate strings using the $.i18n._() function, for example:
@@ -45,19 +45,19 @@ It's straightforward to pass dynamic data into your translations. First, add _%s
 var my_dictionary = {
     "wildcard example"  : "We have been passed two values : %s and %s."
 }
-$.i18n.setDictionary(my_dictionary);
+$.i18n.load(my_dictionary);
 ```
 
-Next, pass an array of values in as the second argument when you perform the translation :
+Next, pass values in sequence after the dictionary key when you perform the translation :
 
 ```javascript
-$('div#example').text($.i18n._('wildcard example', [100, 200]));
+$('div#example').text($.i18n._('wildcard example', 100, 200));
 ```
 
 or
 
 ```javascript
-$('div#example')._t('wildcard example', [100, 200]);
+$('div#example')._t('wildcard example', 100, 200);
 ```
 
 This will output _We have been passed two values : 100 and 200._
@@ -68,9 +68,9 @@ Because some languages will need to order arguments differently to english, you 
 var my_dictionary = {
     "wildcard example"  : "We have been passed two values : %2$s and %1$s."
 }
-$.i18n.setDictionary(my_dictionary);
+$.i18n.load(my_dictionary);
 
-$('div#example').text($.i18n._('wildcard example', [100, 200]));
+$('div#example').text($.i18n._('wildcard example', 100, 200));
 ```
 
 This will output: _We have been passed two values: 200 and 100._
@@ -81,9 +81,9 @@ If you need to explicitly output the string _%s_ in your translation, use _%%s_ 
 var my_dictionary = {
     "wildcard example"  : "I have %s literal %%s character."
 }
-$.i18n.setDictionary(my_dictionary);
+$.i18n.load(my_dictionary);
 
-$('div#example').text($.i18n._('wildcard example', [1]));
+$('div#example').text($.i18n._('wildcard example', 1));
 ```
 
 This will output: _I have 1 literal %%s character._
@@ -91,53 +91,13 @@ This will output: _I have 1 literal %%s character._
 Building From Scratch
 ---------------------
 
-You can build the regular, un-minified version simply by running _ant_:
-
-```bash
-$ ant
-Buildfile: build.xml
-
-jquery.i18n:
-     [echo] Building ./jquery.i18n.js
-     [echo] ./jquery.i18n.js built.
-
-BUILD SUCCESSFUL
-Total time: 0 seconds
-```
-
-Before you can build the minified version yourself, you'll need to download the [Google Closure Compiler](http://closure-compiler.googlecode.com/files/compiler-latest.zip) and put it in a folder called _build_:
-
-```bash
-$ mkdir build
-$ cd build
-$ wget http://closure-compiler.googlecode.com/files/compiler-latest.zip
-$ unzip compiler-latest.zip
-```
-
-Once you have the compiler, you can build the minified version by running _ant min_:
-
-```bash
-$ ant min
-Buildfile: build.xml
-
-jquery.i18n:
-     [echo] Building ./jquery.i18n.js
-     [echo] ./jquery.i18n.js built.
-
-min:
-     [echo] Building ./jquery.i18n.min.js
-    [apply] Applied java to 1 file and 0 directories.
-   [delete] Deleting: /Users/dave/Documents/Code/jquery/jquery-i18n/tmpmin
-     [echo] ./jquery.i18n.min.js built.
-
-BUILD SUCCESSFUL
-Total time: 1 second
-```
+Use `grunt` to run the build.
 
 
 Change history
 -----------
 
+* **Version 1.1.0 (2013-12-31)** : Use grunt, update printf implementation, `setDictionary` is now `load`
 * **Version 1.0.1 (2013-10-11)** : Add bower support.
 * **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
 
