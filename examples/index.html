@@ -23,7 +23,7 @@ $(document).ready(function(){
 		"Ordered Dynamic Content": "%2$s is the height of your browser window, and %1$s is the width."
 	};
 
-	$.i18n.setDictionary(i18n_dict);
+	$.i18n.load(i18n_dict);
 
 	$('input#translate_button').click( function(event) {
 		$('div#example1').text($.i18n._('Example 1'));
@@ -36,8 +36,8 @@ $(document).ready(function(){
 		$('div#example8').text($.i18n._('Example 8'));
 		$('div#example9').text($.i18n._('Example 9'));
 		$('div#example10').text($.i18n._('Example 10'));
-		$('div#dynamic').text($.i18n._('Dynamic Content', [$(document).width(), $(document).height()]));
-		$('div#orderedDynamic').text($.i18n._('Ordered Dynamic Content', [$(document).width(), $(document).height()]));
+		$('div#dynamic').text($.i18n._('Dynamic Content', $(document).width(), $(document).height()));
+		$('div#orderedDynamic').text($.i18n._('Ordered Dynamic Content', $(document).width(), $(document).height()));
 	});
 });
 </script>
