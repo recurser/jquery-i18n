@@ -1,36 +1,39 @@
-/*
+/*!
  * jQuery i18n plugin
  * @requires jQuery v1.1 or later
  *
- * See http://recursive-design.com/projects/jquery-i18n/
+ * Licensed under the MIT license.
  *
- * Licensed under the MIT license:
- *   http://www.opensource.org/licenses/mit-license.php
- *
- * Version: @VERSION (@DATE)
+ * Version: <%= pkg.version %> (<%= meta.date %>)
  */
- (function($) {
+(function($) {
   /**
    * i18n provides a mechanism for translating strings using a jscript dictionary.
    *
    */
 
+  var __slice = Array.prototype.slice;
+
   /*
    * i18n property list
    */
-  $.i18n = {
+  var i18n = {
 
   	dict: null,
 
     /**
-     * setDictionary()
+     * load()
      *
-     * Initialises the dictionary.
+     * Load translations.
      *
      * @param  property_list i18n_dict : The dictionary to use for translation.
      */
-  	setDictionary: function(i18n_dict) {
-  		this.dict = i18n_dict;
+  	load: function(i18n_dict) {
+      if (this.dict !== null) {
+        $.extend(this.dict, i18n_dict);
+      } else {
+        this.dict = i18n_dict;
+      }
   	},
 
     /**
@@ -40,18 +43,19 @@
      * one exists. If a translation is not found, returns the original word.
      *
      * @param  string str           : The string to translate.
-     * @param  property_list params : params for using printf() on the string.
+     * @param  property_list params.. : params for using printf() on the string.
      *
      * @return string               : Translated word.
      */
-  	_: function (str, params) {
-  		var result = str;
-  		if (this.dict && this.dict[str]) {
-  			result = this.dict[str];
+  	_: function (str) {
+      dict = this.dict;
+  		if (dict && dict.hasOwnProperty(str)) {
+  			str = dict[str];
   		}
-
+      args = __slice.call(arguments);
+      args[0] = str;
   		// Substitute any params.
-  		return this.printf(result, params);
+  		return this.printf.apply(this, args);
   	},
 
     /*
@@ -65,35 +69,14 @@
      * @return string result : Substituted string
      */
   	printf: function(str, args) {
-  		if (!args) return str;
-
-  		var result = '';
-  		var search = /%(\d+)\$s/g;
-
-  		// Replace %n1$ where n is a number.
-  		var matches = search.exec(str);
-  		while (matches) {
-  			var index = parseInt(matches[1], 10) - 1;
-  			str       = str.replace('%' + matches[1] + '\$s', (args[index]));
-  		  matches   = search.exec(str);
-  		}
-  		var parts = str.split('%s');
-
-  		if (parts.length > 1) {
-  			for(var i = 0; i < args.length; i++) {
-  			  // If the part ends with a '%' chatacter, we've encountered a literal
-  			  // '%%s', which we should output as a '%s'. To achieve this, add an
-  			  // 's' on the end and merge it with the next part.
-  				if (parts[i].length > 0 && parts[i].lastIndexOf('%') == (parts[i].length - 1)) {
-  					parts[i] += 's' + parts.splice(i + 1, 1)[0];
-  				}
-
-  				// Append the part and the substitution to the result.
-  				result += parts[i] + args[i];
-  			}
-  		}
-
-  		return result + parts[parts.length - 1];
+  		if (arguments.length < 2) return str;
+      args = $.isArray(args) ? args : __slice.call(arguments, 1);
+      return str.replace(/([^%]|^)%(?:(\d+)\$)?s/g, function(p0, p, position) {
+        if (position) {
+          return p + args[parseInt(position)-1];
+        }
+        return p + args.shift();
+      }).replace(/%%s/g, '%s');
   	}
 
   };
@@ -111,7 +94,8 @@
    * @return element              : Chained and translated element(s).
   */
   $.fn._t = function(str, params) {
-    return $(this).text($.i18n._(str, params));
+    return $(this).text(i18n._.apply(i18n, arguments));
   };
 
+  $.i18n = i18n;
 })(jQuery);
