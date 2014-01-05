@@ -2,9 +2,11 @@
  * jQuery i18n plugin
  * @requires jQuery v1.1 or later
  *
+ * See https://github.com/recurser/jquery-i18n
+ *
  * Licensed under the MIT license.
  *
- * Version: 1.1.0 (Tue, 31 Dec 2013 03:14:34 GMT)
+ * Version: 1.1.1 (Sun, 05 Jan 2014 05:26:50 GMT)
  */
 (function($) {
   /**
@@ -94,7 +96,7 @@
    * @return element              : Chained and translated element(s).
   */
   $.fn._t = function(str, params) {
-    return $(this).text(i18n._.apply(i18n, arguments));
+    return $(this).html(i18n._.apply(i18n, arguments));
   };
 
   $.i18n = i18n;
