@@ -91,13 +91,13 @@ This will output: _I have 1 literal %%s character._
 Building From Scratch
 ---------------------
 
-Use `grunt` to run the build.
+Use `npm install` to install the dependencies, and `grunt` to run the build.
 
 
 Change history
 -----------
 
-* **Version 1.1.0 (2013-12-31)** : Use grunt, update printf implementation, `setDictionary` is now `load`
+* **Version 1.1.0 (2013-12-31)** : Use grunt, update printf implementation, `setDictionary` is now `load` (thanks to [ktmud](https://github.com/ktmud)).
 * **Version 1.0.1 (2013-10-11)** : Add bower support.
 * **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
 
