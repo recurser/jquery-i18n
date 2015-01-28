@@ -21,7 +21,8 @@
    */
   var i18n = {
 
-  	dict: null,
+    dict: null,
+    missingPattern: null,
 
     /**
      * load()
@@ -30,13 +31,16 @@
      *
      * @param  property_list i18n_dict : The dictionary to use for translation.
      */
-  	load: function(i18n_dict) {
+    load: function(i18n_dict, missingPattern) {
       if (this.dict !== null) {
         $.extend(this.dict, i18n_dict);
       } else {
         this.dict = i18n_dict;
       }
-  	},
+      if (missingPattern) {
+        this.missingPattern = missingPattern;
+      }
+    },
 
     /**
      * _()
@@ -49,16 +53,18 @@
      *
      * @return string               : Translated word.
      */
-  	_: function (str) {
+    _: function (str) {
       dict = this.dict;
-  		if (dict && dict.hasOwnProperty(str)) {
-  			str = dict[str];
-  		}
+      if (dict && dict.hasOwnProperty(str)) {
+        str = dict[str];
+      } else if (this.missingPattern !== null) {
+        return this.printf(this.missingPattern, str);
+      }
       args = __slice.call(arguments);
       args[0] = str;
-  		// Substitute any params.
-  		return this.printf.apply(this, args);
-  	},
+      // Substitute any params.
+      return this.printf.apply(this, args);
+    },
 
     /*
      * printf()
@@ -70,8 +76,8 @@
      *
      * @return string result : Substituted string
      */
-  	printf: function(str, args) {
-  		if (arguments.length < 2) return str;
+    printf: function(str, args) {
+      if (arguments.length < 2) return str;
       args = $.isArray(args) ? args : __slice.call(arguments, 1);
       return str.replace(/([^%]|^)%(?:(\d+)\$)?s/g, function(p0, p, position) {
         if (position) {
@@ -79,7 +85,7 @@
         }
         return p + args.shift();
       }).replace(/%%s/g, '%s');
-  	}
+    }
 
   };
 

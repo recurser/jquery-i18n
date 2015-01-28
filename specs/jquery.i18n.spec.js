@@ -11,6 +11,12 @@ describe ('jquery.i18n plugin', function() {
 		
 		expect($.i18n._('another_key')).toEqual('another_key');
 	});
+
+	it ('returns the missing pattern when there is no translation, and a missing pattern is provided', function() {
+		$.i18n.load({ a_key: 'translated string' }, "{{ %s }}");
+		
+		expect($.i18n._('another_key')).toEqual('{{ another_key }}');
+	});
 	
 	describe ('variable substitution', function() {
 	  
