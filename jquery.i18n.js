@@ -6,7 +6,7 @@
  *
  * Licensed under the MIT license.
  *
- * Version: 1.1.1 (Fri, 11 Aug 2017 03:37:25 GMT)
+ * Version: 1.1.1 (Fri, 11 Aug 2017 03:51:59 GMT)
  */
 (function($) {
   /**
@@ -29,13 +29,13 @@
      *
      * Load translations.
      *
-     * @param  property_list i18n_dict : The dictionary to use for translation.
+     * @param  property_list i18nDict : The dictionary to use for translation.
      */
-    load: function(i18n_dict, missingPattern) {
+    load: function(i18nDict, missingPattern) {
       if (this.dict !== null) {
-        $.extend(this.dict, i18n_dict);
+        $.extend(this.dict, i18nDict);
       } else {
-        this.dict = i18n_dict;
+        this.dict = i18nDict;
       }
 
       if (missingPattern) {

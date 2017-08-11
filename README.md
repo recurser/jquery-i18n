@@ -17,11 +17,11 @@ Usage
 Before you can do any translation you have to initialise the plugin with a 'dictionary' (basically a property list mapping keys to their translations).
 
 ```javascript
-var my_dictionary = {
-    'some text':      'a translation',
-    'some more text': 'another translation'
+var myDictionary = {
+  "some text":      "a translation",
+  "some more text": "another translation"
 }
-$.i18n.load(my_dictionary);
+$.i18n.load(myDictionary);
 ```
 
 Once you've initialised it with a dictionary, you can translate strings using the $.i18n._() function, for example:
@@ -50,10 +50,10 @@ Wildcards
 It's straightforward to pass dynamic data into your translations. First, add _%s_ in the translation for each variable you want to swap in :
 
 ```javascript
-var my_dictionary = {
-    "wildcard example"  : "We have been passed two values : %s and %s."
+var myDictionary = {
+  "wildcard example": "We have been passed two values : %s and %s."
 }
-$.i18n.load(my_dictionary);
+$.i18n.load(myDictionary);
 ```
 
 Next, pass values in sequence after the dictionary key when you perform the translation :
@@ -73,10 +73,10 @@ This will output _We have been passed two values : 100 and 200._
 Because some languages will need to order arguments differently to english, you can also specify the order in which the variables appear :
 
 ```javascript
-var my_dictionary = {
-    "wildcard example"  : "We have been passed two values : %2$s and %1$s."
+var myDictionary = {
+  "wildcard example": "We have been passed two values : %2$s and %1$s."
 }
-$.i18n.load(my_dictionary);
+$.i18n.load(myDictionary);
 
 $('div#example').text($.i18n._('wildcard example', 100, 200));
 ```
@@ -86,10 +86,10 @@ This will output: _We have been passed two values: 200 and 100._
 If you need to explicitly output the string _%s_ in your translation, use _%%s_ :
 
 ```javascript
-var my_dictionary = {
-    "wildcard example"  : "I have %s literal %%s character."
+var myDictionary = {
+  "wildcard example": "I have %s literal %%s character."
 }
-$.i18n.load(my_dictionary);
+$.i18n.load(myDictionary);
 
 $('div#example').text($.i18n._('wildcard example', 1));
 ```

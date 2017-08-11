@@ -29,13 +29,13 @@
      *
      * Load translations.
      *
-     * @param  property_list i18n_dict : The dictionary to use for translation.
+     * @param  property_list i18nDict : The dictionary to use for translation.
      */
-    load: function(i18n_dict, missingPattern) {
+    load: function(i18nDict, missingPattern) {
       if (this.dict !== null) {
-        $.extend(this.dict, i18n_dict);
+        $.extend(this.dict, i18nDict);
       } else {
-        this.dict = i18n_dict;
+        this.dict = i18nDict;
       }
 
       if (missingPattern) {
