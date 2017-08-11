@@ -6,7 +6,7 @@
  *
  * Licensed under the MIT license.
  *
- * Version: 1.1.1 (Wed, 28 Jan 2015 15:16:19 GMT)
+ * Version: 1.1.1 (Fri, 11 Aug 2017 03:37:25 GMT)
  */
 (function($) {
   /**
@@ -37,9 +37,20 @@
       } else {
         this.dict = i18n_dict;
       }
+
       if (missingPattern) {
         this.missingPattern = missingPattern;
       }
+    },
+
+    /**
+     * unload()
+     *
+     * Unloads translations and clears the dictionary.
+     */
+    unload: function() {
+      this.dict           = null;
+      this.missingPattern = null;
     },
 
     /**

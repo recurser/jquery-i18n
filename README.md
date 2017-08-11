@@ -36,6 +36,14 @@ or using $('selector')._t() function
 $('div#example')._t('some text');
 ```
 
+If you'd like to switch languages, you can unload the current dictionary and load a new one:
+
+```javascript
+$.i18n.load('en');
+$.i18n.unload();
+$.i18n.load('ja');
+```
+
 Wildcards
 ---------
 

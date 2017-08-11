@@ -37,9 +37,20 @@
       } else {
         this.dict = i18n_dict;
       }
+
       if (missingPattern) {
         this.missingPattern = missingPattern;
       }
+    },
+
+    /**
+     * unload()
+     *
+     * Unloads translations and clears the dictionary.
+     */
+    unload: function() {
+      this.dict           = null;
+      this.missingPattern = null;
     },
 
     /**
