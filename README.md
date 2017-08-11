@@ -96,6 +96,21 @@ $('div#example').text($.i18n._('wildcard example', 1));
 
 This will output: _I have 1 literal %%s character._
 
+
+Identifying missing translations
+---------
+
+When loading the dictionary, you can pass a second `missingPattern` parameter, which will be used to format any missing translations.
+
+```javascript
+$.i18n.load({ a_key: 'translated string' }, "{{ %s }}");
+// The following line will output '{{ another_key }}'
+$.i18n._('another_key')
+```
+
+This allows you scan for the given pattern to identify missing translations.
+
+
 Building From Scratch
 ---------------------
 
@@ -105,8 +120,9 @@ Use `npm install` to install the dependencies, and `grunt` to run the build.
 Change history
 -----------
 
-* **Version 1.1.1 (2014-01-05)** : Use html() instead of text() when rendering translations.
-* **Version 1.1.0 (2013-12-31)** : Use grunt, update printf implementation, `setDictionary` is now `load` (thanks to [ktmud](https://github.com/ktmud)).
+* **Version 1.1.2 (2017-08-11)** : Add an `unload()` method to clear the dictionary, support passing a `missingPattern` when loading the dictionary (thanks to [briantani](https://github.com/briantani)).
+* **Version 1.1.1 (2014-01-05)** : Use `html()` instead of `text()` when rendering translations.
+* **Version 1.1.0 (2013-12-31)** : Use grunt, update `printf` implementation, `setDictionary` is now `load` (thanks to [ktmud](https://github.com/ktmud)).
 * **Version 1.0.1 (2013-10-11)** : Add bower support.
 * **Version 1.0.0 (2012-10-14)** : 1.0 release - addition of a test suite (huge thanks to [alexaitken](https://github.com/alexaitken)), plus a major cleanup.
 
