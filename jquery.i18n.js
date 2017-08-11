@@ -6,7 +6,7 @@
  *
  * Licensed under the MIT license.
  *
- * Version: 1.1.1 (Fri, 11 Aug 2017 03:51:59 GMT)
+ * Version: 1.1.2 (Fri, 11 Aug 2017 03:52:21 GMT)
  */
 (function($) {
   /**
